@@ -13,12 +13,12 @@ describe("mykarina contract", function () {
 
     //* myKarina 스마트 계약 배포, 본격적인 배포는 scripts 폴더 안에서 진행해야 한다.
 
-    const myKarinaFactory = await ethers.getContractFactory("MyKarina");
+    const myKarinaFactory = await ethers.getContractFactory("myKarina");
     myKarinaContract = (await myKarinaFactory.deploy(
       "KarinaToken",
       "KRN"
     )) as MyKarina;
-    //* deployed() 함수가 안먹히는데, 이유를 파악해야 한다.
-    await myKarinaContract;
+    //* deployed() 함수가 안먹히는데, 이유를 파악해야 한다.  => wautFirDeployment()
+    myKarinaContract.waitForDeployment();
   });
 });
